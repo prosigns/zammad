@@ -1,0 +1,14 @@
+query ticketOverviews($withTicketCount: Boolean!) {
+  ticketOverviews {
+    edges {
+      node {
+        ...overviewAttributes
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}

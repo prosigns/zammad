@@ -1,0 +1,8 @@
+mutation accountOutOfOffice($input: OutOfOfficeInput!) {
+  accountOutOfOffice(input: $input) {
+    success
+    errors {
+      ...errors
+    }
+  }
+}

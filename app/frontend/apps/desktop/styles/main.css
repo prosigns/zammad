@@ -1,0 +1,86 @@
+@import './transitions.css';
+@config './tailwind.desktop.js';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Override autofill styles in Firefox. */
+  :-moz-autofill {
+    background: transparent;
+  }
+
+  /* Override autofill styles in Webkit-based browsers. */
+  :-webkit-autofill {
+    -webkit-text-fill-color: theme('colors.black');
+    -webkit-background-clip: text;
+    caret-color: theme('colors.black');
+  }
+
+  [data-theme='dark'] :-webkit-autofill {
+    -webkit-text-fill-color: theme('colors.white');
+    caret-color: theme('colors.white');
+  }
+
+  /* No-op animation for hooking into autofill mechanism in Webkit-based browsers. */
+  :-webkit-autofill {
+    animation-name: onAutoFillStart;
+  }
+
+  :not(:-webkit-autofill) {
+    animation-name: onAutoFillEnd;
+  }
+
+  /* Better-looking typography on high-density screens. */
+  body {
+    @apply antialiased;
+  }
+
+  @keyframes onAutoFillStart {
+    from {
+    }
+
+    to {
+    }
+  }
+
+  @keyframes onAutoFillEnd {
+    from {
+    }
+
+    to {
+    }
+  }
+}
+
+@layer components {
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-stone-200 dark:text-neutral-500;
+  }
+
+  .required::after {
+    @apply inline-block font-extrabold text-yellow-600 content-['•'] ltr:ml-1 rtl:mr-1;
+  }
+
+  /* Compatibility layer for object attributes and form columns. */
+  .form-group .formkit-outer {
+    @apply col-span-2;
+
+    &.form-group-single-column {
+      @apply col-span-1;
+    }
+  }
+
+  /*
+    TODO: Dirty mark styling within the field.
+
+    .form-group.form-group-mark-dirty .formkit-outer[data-dirty]::before {}
+  */
+}
+
+@layer utilities {
+  .group-block {
+    @apply rounded-3xl bg-white p-5 text-black dark:bg-gray-500 dark:text-white;
+  }
+}
