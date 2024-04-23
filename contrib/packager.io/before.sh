@@ -11,6 +11,7 @@ ruby -v
 env
 cat Gemfile.lock
 
+ZAMMAD_VERSION="2.0.1"
 echo "Setting VERSION information to 2.0.1"
 echo "$ZAMMAD_VERSION" > VERSION
 
